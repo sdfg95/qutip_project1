@@ -6,14 +6,15 @@ o = radians(int(input('ВВедите коэффициент деления')))
 m = input('ВВедите способ(матричный,тензорный)')
 
 psi_in = basis(N,n)
-sz = Qobj([[cos(o),exp(-1j*o)*sin(o)], [-exp(-1j*o)*sin(o),cos(o)]])
+s = Qobj([[cos(o),exp(-1j*o)*sin(o)], [-exp(-1j*o)*sin(o),cos(o)]])
 a = create(2)
+
 if m =='матричный':
-  print(sz*psi_in)
+  print(s*psi_in)
 elif m=='тензорный':
   psi_in = tensor(basis(2,1),basis(2,0))
-  x=(o*1j)
+  x = (o*1j)
   h1 = (e**x)*tensor(a.dag(),a)
-  H= h1+h1.conj()
-  u= (e**array(-1j*H))
+  H = h1+h1.conj()
+  u = (e**array(-1j*H))
   print(u*psi_in)
